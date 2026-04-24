@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaira Digitals - Digital Marketing Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #06b6d4;
+            --accent-bright: #00d9ff;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a1f35 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1), transparent);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            max-width: 700px;
+            text-align: center;
+            z-index: 10;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            scroll-margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Services Section */
+        #services {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.5), rgba(30, 41, 59, 0.5));
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5));
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        #about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .about-features li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .about-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(0, 217, 255, 0.2));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            border: 2px solid rgba(6, 182, 212, 0.3);
+        }
+
+        /* Blog Section */
+        #blog {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.5), rgba(30, 41, 59, 0.5));
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+        }
+
+        .blog-date {
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            color: var(--primary);
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-content h3 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .blog-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(0, 217, 255, 0.05));
+            border-radius: 10px;
+            padding: 4rem 2rem !important;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: var(--text-muted);
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-bright);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #about {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .nav-links {
+                gap: 0.8rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Hidden sections */
+        section:not(.active-section) {
+            display: none;
+        }
+
+        section.active-section {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Aaira</div>
+            <ul class="nav-links">
+                <a class="nav-link active" onclick="showSection('home')">Home</a>
+                <a class="nav-link" onclick="showSection('services')">Services</a>
+                <a class="nav-link" onclick="showSection('about')">About</a>
+                <a class="nav-link" onclick="showSection('portfolio')">Portfolio</a>
+                <a class="nav-link" onclick="showSection('blog')">Blog</a>
+                <a class="nav-link" onclick="showSection('contact')">Contact</a>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section / Home -->
+    <section id="home" class="hero active-section">
+        <div class="hero-content">
+            <h1>Grow Your Brand with <span class="highlight">Digital Excellence</span></h1>
+            <p>Strategic digital marketing solutions for startups, small businesses, and e-commerce brands. We help you reach the right audience and convert them into loyal customers.</p>
+            <button class="cta-button" onclick="showSection('contact')">Get Started Today</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="active-section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Search Engine Optimization</h3>
+                <p>Boost your online visibility with our data-driven SEO strategies. We optimize your website to rank higher and drive organic traffic that converts.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Social Media Marketing</h3>
+                <p>Build a powerful social presence across all platforms. We create engaging content and run campaigns that grow your community and drive sales.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✍️</div>
+                <h3>Content Creation</h3>
+                <p>Compelling storytelling that resonates. From blog posts to videos, we create high-quality content that attracts and engages your target audience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="active-section">
+        <h2 class="section-title">Recent Projects</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">🏪</div>
+                <div class="portfolio-info">
+                    <h3>E-commerce Growth</h3>
+                    <p>Increased sales by 150% through targeted SEO and social media campaigns for an online store</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">📈</div>
+                <div class="portfolio-info">
+                    <h3>Startup Launch</h3>
+                    <p>Built brand awareness from zero to 10K followers in 3 months with strategic content marketing</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">💼</div>
+                <div class="portfolio-info">
+                    <h3>B2B Lead Generation</h3>
+                    <p>Generated 200+ qualified leads monthly through LinkedIn marketing and content strategy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="active-section">
+        <div class="about-content">
+            <h2>About Aaira Digitals</h2>
+            <p>We're a team of passionate digital marketers dedicated to transforming your business through strategic online presence and data-driven campaigns.</p>
+            <p>With expertise across SEO, social media, and content creation, we've helped dozens of brands achieve their growth goals. Our approach is simple: understand your goals, create a tailored strategy, and deliver measurable results.</p>
+            <ul class="about-features">
+                <li>Certified digital marketing professionals</li>
+                <li>Data-driven strategies for proven results</li>
+                <li>Full transparency and regular reporting</li>
+                <li>Dedicated support for your success</li>
+            </ul>
+        </div>
+        <div class="about-image">🚀</div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="active-section">
+        <h2 class="section-title">Latest Insights</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-date">Apr 20, 2024</div>
+                <div class="blog-content">
+                    <h3>SEO Trends 2024</h3>
+                    <p>Discover the latest SEO strategies that are driving traffic and rankings in 2024. Learn what's working and how to implement it.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-date">Apr 15, 2024</div>
+                <div class="blog-content">
+                    <h3>Social Media ROI</h3>
+                    <p>How to measure and maximize your social media marketing return on investment. Real case studies and practical tips included.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-date">Apr 10, 2024</div>
+                <div class="blog-content">
+                    <h3>Content Strategy Guide</h3>
+                    <p>A complete guide to creating content that converts. From planning to execution, everything you need to know.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="active-section">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Ready to take your digital presence to the next level? Let's talk about your goals and how we can help.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>📧 Email</h4>
+                    <p><a href="mailto:aairadigitals@gmail.com">aairadigitals@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>📱 Phone</h4>
+                    <p><a href="tel:+919100792969">+91 9100792969</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>📍 Location</h4>
+                    <p>Hyderabad, India</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="cta-button" onclick="alert('Thank you for your interest! We will get back to you soon.')">Send Us A Message</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Aaira Digitals. All rights reserved. | Digital Marketing Solutions for Growth</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active-section');
+            }
+
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
