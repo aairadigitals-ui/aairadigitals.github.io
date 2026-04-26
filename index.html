@@ -219,6 +219,10 @@
             box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
         }
 
+        .service-card:active {
+            transform: scale(0.98);
+        }
+
         .service-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -625,17 +629,17 @@
     <section id="services" class="active-section">
         <h2 class="section-title">Our Services</h2>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card" onclick="openModal('service1')">
                 <div class="service-icon">🔍</div>
                 <h3>Search Engine Optimization</h3>
                 <p>Boost your online visibility with our data-driven SEO strategies. We optimize your website to rank higher and drive organic traffic that converts.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="openModal('service2')">
                 <div class="service-icon">📱</div>
                 <h3>Social Media Marketing</h3>
                 <p>Build a powerful social presence across all platforms. We create engaging content and run campaigns that grow your community and drive sales.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="openModal('service3')">
                 <div class="service-icon">✍️</div>
                 <h3>Content Creation</h3>
                 <p>Compelling storytelling that resonates. From blog posts to videos, we create high-quality content that attracts and engages your target audience.</p>
@@ -696,6 +700,153 @@
             </div>
         </div>
     </section>
+
+    <!-- Service Modals -->
+    <div id="service1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('service1')">&times;</span>
+            <h2>🔍 Search Engine Optimization (SEO)</h2>
+            
+            <div class="modal-section">
+                <h3>What is SEO?</h3>
+                <p>SEO is the process of optimizing your website to rank higher in Google search results. We help your business get found by people actively searching for your products or services.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What We Do</h3>
+                <p><strong>On-Page SEO:</strong> Optimize page titles, meta descriptions, headings, content, and internal links for target keywords.</p>
+                <p><strong>Technical SEO:</strong> Improve site speed, mobile responsiveness, site structure, XML sitemaps, and crawlability.</p>
+                <p><strong>Off-Page SEO:</strong> Build quality backlinks, improve domain authority, and establish your brand credibility.</p>
+                <p><strong>Local SEO:</strong> Optimize Google My Business, local citations, and location-based keywords for local search visibility.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>📊 Typical Results</h3>
+                <span class="result-badge">+150-300% Organic Traffic</span>
+                <span class="result-badge">Top 10 Google Rankings</span>
+                <span class="result-badge">Lower Customer Acquisition Cost</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 How It Works</h3>
+                <p><strong>Month 1:</strong> Keyword research, audit, and optimization planning</p>
+                <p><strong>Month 2-3:</strong> On-page optimization and content creation</p>
+                <p><strong>Month 3-6:</strong> Link building and continuous optimization</p>
+                <p><strong>Month 6+:</strong> Sustained rankings and traffic growth</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Best For</h3>
+                <p>E-commerce stores, service-based businesses, local businesses, SaaS companies, anyone wanting long-term organic traffic growth.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>✅ Why Choose Us</h3>
+                <p>✓ White-hat SEO practices (no shortcuts)</p>
+                <p>✓ Data-driven keyword research</p>
+                <p>✓ Regular reporting and transparency</p>
+                <p>✓ Continuous optimization for best results</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="service2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('service2')">&times;</span>
+            <h2>📱 Social Media Marketing</h2>
+            
+            <div class="modal-section">
+                <h3>What is Social Media Marketing?</h3>
+                <p>We help your brand build a powerful presence on platforms where your customers spend time - Instagram, Facebook, LinkedIn, Twitter, and more.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What We Do</h3>
+                <p><strong>Content Strategy:</strong> Create a consistent posting schedule with engaging, on-brand content.</p>
+                <p><strong>Content Creation:</strong> Professional graphics, videos, Reels, stories, and carousel posts.</p>
+                <p><strong>Community Management:</strong> Respond to comments, engage with followers, build relationships.</p>
+                <p><strong>Paid Campaigns:</strong> Run targeted ads to reach your ideal customers and drive conversions.</p>
+                <p><strong>Analytics:</strong> Track performance and optimize for better results every month.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>📊 Typical Results</h3>
+                <span class="result-badge">+500-5000 Followers/Month</span>
+                <span class="result-badge">10-30% Engagement Rate</span>
+                <span class="result-badge">High-Quality Leads</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 How It Works</h3>
+                <p><strong>Week 1:</strong> Audit, strategy development, content planning</p>
+                <p><strong>Week 2-4:</strong> Content creation and posting schedule begins</p>
+                <p><strong>Month 2:</strong> Paid campaigns launch, community engagement</p>
+                <p><strong>Month 3+:</strong> Optimization based on performance data</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Best For</h3>
+                <p>B2C businesses, lifestyle brands, e-commerce, beauty/fashion, restaurants, coaches, creators, anyone wanting to build an engaged community.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>✅ Why Choose Us</h3>
+                <p>✓ Creative, on-brand content</p>
+                <p>✓ Consistent posting and engagement</p>
+                <p>✓ Growth-focused strategies</p>
+                <p>✓ Monthly reports with insights</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="service3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('service3')">&times;</span>
+            <h2>✍️ Content Creation</h2>
+            
+            <div class="modal-section">
+                <h3>What is Content Creation?</h3>
+                <p>Content is the foundation of digital marketing. We create compelling stories, guides, and resources that attract your ideal customers and establish your authority.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What We Create</h3>
+                <p><strong>Blog Posts:</strong> SEO-optimized articles that rank on Google and drive organic traffic.</p>
+                <p><strong>Video Content:</strong> YouTube videos, Reels, product demos, testimonials, tutorials.</p>
+                <p><strong>Social Media Content:</strong> Instagram posts, TikToks, LinkedIn articles, Facebook content.</p>
+                <p><strong>Long-Form Content:</strong> Whitepapers, case studies, guides, ebooks.</p>
+                <p><strong>Email Content:</strong> Newsletters, email sequences, promotional content.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>📊 Typical Results</h3>
+                <span class="result-badge">+200-400% Engagement</span>
+                <span class="result-badge">Better Google Rankings</span>
+                <span class="result-badge">Higher Conversion Rates</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 How It Works</h3>
+                <p><strong>Phase 1:</strong> Content audit and strategy planning</p>
+                <p><strong>Phase 2:</strong> Content calendar creation (3-6 months plan)</p>
+                <p><strong>Phase 3:</strong> Content creation and publishing</p>
+                <p><strong>Phase 4:</strong> Performance tracking and optimization</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Best For</h3>
+                <p>SaaS companies, agencies, coaches, educators, e-commerce, any business wanting to establish thought leadership and attract customers.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>✅ Why Choose Us</h3>
+                <p>✓ Original, high-quality writing</p>
+                <p>✓ SEO-optimized for search rankings</p>
+                <p>✓ Brand voice consistency</p>
+                <p>✓ Regular content delivery and updates</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Project Modals -->
     <div id="project1" class="modal">
