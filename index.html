@@ -259,6 +259,7 @@
         .portfolio-item:hover {
             border-color: var(--accent);
             transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
         }
 
         .portfolio-image {
@@ -283,6 +284,106 @@
         .portfolio-info p {
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close {
+            color: var(--text);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: var(--accent);
+        }
+
+        .modal h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            color: var(--accent-bright);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .modal-section p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .result-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-tag {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.2);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
         /* About Section */
@@ -457,6 +558,12 @@
             section {
                 padding: 3rem 1rem;
             }
+
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+                padding: 1.5rem;
+            }
         }
 
         @media (max-width: 500px) {
@@ -486,11 +593,6 @@
         section.active-section {
             display: block;
             animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
     </style>
 </head>
@@ -543,31 +645,298 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="active-section">
-        <h2 class="section-title">Recent Projects</h2>
+        <h2 class="section-title">Our Success Stories</h2>
         <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <div class="portfolio-image">🏪</div>
+            <div class="portfolio-item" onclick="openModal('project1')">
+                <div class="portfolio-image">🛍️</div>
                 <div class="portfolio-info">
-                    <h3>E-commerce Growth</h3>
-                    <p>Increased sales by 150% through targeted SEO and social media campaigns for an online store</p>
+                    <h3>StyleHub Fashion</h3>
+                    <p>E-commerce growth through SEO and social campaigns</p>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image">📈</div>
+
+            <div class="portfolio-item" onclick="openModal('project2')">
+                <div class="portfolio-image">📱</div>
                 <div class="portfolio-info">
-                    <h3>Startup Launch</h3>
-                    <p>Built brand awareness from zero to 10K followers in 3 months with strategic content marketing</p>
+                    <h3>TechStart Solutions</h3>
+                    <p>B2B lead generation and brand awareness</p>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image">💼</div>
+
+            <div class="portfolio-item" onclick="openModal('project3')">
+                <div class="portfolio-image">🍔</div>
                 <div class="portfolio-info">
-                    <h3>B2B Lead Generation</h3>
-                    <p>Generated 200+ qualified leads monthly through LinkedIn marketing and content strategy</p>
+                    <h3>FoodieHub Restaurant</h3>
+                    <p>Local SEO and social media growth strategy</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" onclick="openModal('project4')">
+                <div class="portfolio-image">💄</div>
+                <div class="portfolio-info">
+                    <h3>Beauty Studio Hyderabad</h3>
+                    <p>Instagram marketing and local brand presence</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" onclick="openModal('project5')">
+                <div class="portfolio-image">📚</div>
+                <div class="portfolio-info">
+                    <h3>DigitalLearn Academy</h3>
+                    <p>Content marketing and course sales optimization</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item" onclick="openModal('project6')">
+                <div class="portfolio-image">🏠</div>
+                <div class="portfolio-info">
+                    <h3>HomeLift Real Estate</h3>
+                    <p>Lead generation and SEO for property business</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Project Modals -->
+    <div id="project1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project1')">&times;</span>
+            <h2>StyleHub Fashion - E-commerce Growth</h2>
+            
+            <div class="modal-section">
+                <h3>📊 Results Achieved</h3>
+                <span class="result-badge">+245% Revenue Growth</span>
+                <span class="result-badge">+180% Traffic</span>
+                <span class="result-badge">₹45 Lakhs Sales</span>
+                <p>Transformed an emerging fashion brand into a top-performing e-commerce store with strategic SEO and targeted social media campaigns.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Challenges</h3>
+                <p>StyleHub was struggling with low visibility in a competitive fashion market. Their website had poor SEO ranking, limited social media presence, and unclear product positioning.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 Our Strategy</h3>
+                <p><strong>Phase 1 (SEO):</strong> Conducted keyword research, optimized product pages, created fashion blog content, and built quality backlinks.</p>
+                <p><strong>Phase 2 (Social):</strong> Built Instagram content calendar, created Reels showcasing products, ran targeted ads, engaged with fashion communities.</p>
+                <p><strong>Phase 3 (Content):</strong> Created style guides, styling tips, and customer testimonial videos.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🛠️ Services Used</h3>
+                <span class="service-tag">Technical SEO</span>
+                <span class="service-tag">Content Marketing</span>
+                <span class="service-tag">Instagram Marketing</span>
+                <span class="service-tag">Paid Ads (Instagram & Google)</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>⏱️ Timeline</h3>
+                <p>3 months - Results started showing in Month 2, peak performance achieved by Month 3.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="project2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project2')">&times;</span>
+            <h2>TechStart Solutions - B2B Lead Generation</h2>
+            
+            <div class="modal-section">
+                <h3>📊 Results Achieved</h3>
+                <span class="result-badge">+320 Qualified Leads</span>
+                <span class="result-badge">+45% Conversion Rate</span>
+                <span class="result-badge">₹60 Lakhs Pipeline Value</span>
+                <p>Generated qualified B2B leads for a software services startup with zero initial presence in the market.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Challenges</h3>
+                <p>New company with limited brand awareness. Needed to establish credibility and generate qualified leads in a competitive B2B software market.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 Our Strategy</h3>
+                <p><strong>Content Marketing:</strong> Created whitepapers, case studies, and thought leadership articles.</p>
+                <p><strong>LinkedIn Strategy:</strong> Built brand presence, ran targeted campaigns, engaged with decision makers.</p>
+                <p><strong>SEO:</strong> Optimized for industry keywords to capture search intent.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🛠️ Services Used</h3>
+                <span class="service-tag">Content Creation</span>
+                <span class="service-tag">LinkedIn Marketing</span>
+                <span class="service-tag">SEO</span>
+                <span class="service-tag">Email Marketing</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>⏱️ Timeline</h3>
+                <p>4 months - Steady lead generation achieved by Month 2, scaled to 80+ leads/month by Month 4.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="project3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project3')">&times;</span>
+            <h2>FoodieHub Restaurant - Local SEO & Growth</h2>
+            
+            <div class="modal-section">
+                <h3>📊 Results Achieved</h3>
+                <span class="result-badge">+420% Google Search Visibility</span>
+                <span class="result-badge">+150 Reservations/Month</span>
+                <span class="result-badge">Top 3 Local Rankings</span>
+                <p>Made a local restaurant a destination by dominating local search and social media.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Challenges</h3>
+                <p>Local restaurant struggling to compete with large chains. Poor online visibility and outdated website affecting foot traffic and reservations.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 Our Strategy</h3>
+                <p><strong>Local SEO:</strong> Google My Business optimization, local citations, location-based keywords.</p>
+                <p><strong>Social Media:</strong> Food photography, behind-the-scenes content, customer reviews amplification.</p>
+                <p><strong>Content:</strong> Menu optimization, chef spotlights, food event promotions.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🛠️ Services Used</h3>
+                <span class="service-tag">Local SEO</span>
+                <span class="service-tag">Instagram Marketing</span>
+                <span class="service-tag">Google My Business</span>
+                <span class="service-tag">Content Creation</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>⏱️ Timeline</h3>
+                <p>2 months - Visible improvements in local rankings within 4 weeks. Full impact achieved by Month 2.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="project4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project4')">&times;</span>
+            <h2>Beauty Studio - Instagram Brand Building</h2>
+            
+            <div class="modal-section">
+                <h3>📊 Results Achieved</h3>
+                <span class="result-badge">+12K Followers in 3 Months</span>
+                <span class="result-badge">+35% Booking Increase</span>
+                <span class="result-badge">₹8 Lakhs Revenue Growth</span>
+                <p>Transformed a local beauty studio into an Instagram sensation with aesthetic content and community engagement.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Challenges</h3>
+                <p>Limited Instagram presence with outdated content. Low engagement and inconsistent posting. Needed to build brand identity.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 Our Strategy</h3>
+                <p><strong>Content Strategy:</strong> Professional before/after shoots, beauty tutorials, artist spotlights, client transformations.</p>
+                <p><strong>Engagement:</strong> Daily stories, reels, polls, Q&A sessions with followers.</p>
+                <p><strong>Community:</strong> Influencer partnerships, customer spotlights, user-generated content.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🛠️ Services Used</h3>
+                <span class="service-tag">Instagram Strategy</span>
+                <span class="service-tag">Content Creation</span>
+                <span class="service-tag">Influencer Outreach</span>
+                <span class="service-tag">Community Management</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>⏱️ Timeline</h3>
+                <p>3 months - Consistent growth achieved with posting strategy. Viral Reels in Month 2 accelerated growth.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="project5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project5')">&times;</span>
+            <h2>DigitalLearn Academy - Course Sales Optimization</h2>
+            
+            <div class="modal-section">
+                <h3>📊 Results Achieved</h3>
+                <span class="result-badge">+890 Course Enrollments</span>
+                <span class="result-badge">+₹35 Lakhs Revenue</span>
+                <span class="result-badge">+280% Content Engagement</span>
+                <p>Launched successful online courses and created consistent enrollment pipeline through strategic content marketing.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Challenges</h3>
+                <p>New online academy with no audience. Needed to establish authority, build trust, and create awareness about digital courses.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 Our Strategy</h3>
+                <p><strong>Content Marketing:</strong> Free courses, webinars, YouTube tutorials building authority.</p>
+                <p><strong>Email Marketing:</strong> Lead magnet strategy, nurture sequences for conversions.</p>
+                <p><strong>Paid Ads:</strong> Targeted YouTube, Google, Facebook campaigns for course promotion.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🛠️ Services Used</h3>
+                <span class="service-tag">Content Strategy</span>
+                <span class="service-tag">Email Marketing</span>
+                <span class="service-tag">YouTube Marketing</span>
+                <span class="service-tag">Paid Advertising</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>⏱️ Timeline</h3>
+                <p>5 months - First enrollments in Month 1, ramped up significantly from Month 3 onwards.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="project6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project6')">&times;</span>
+            <h2>HomeLift Real Estate - Lead Generation</h2>
+            
+            <div class="modal-section">
+                <h3>📊 Results Achieved</h3>
+                <span class="result-badge">+540 Property Leads</span>
+                <span class="result-badge">+₹2.8 Crore Pipeline</span>
+                <span class="result-badge">+72% Qualified Leads</span>
+                <p>Generated high-quality property leads for a real estate developer through SEO and targeted digital campaigns.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🎯 Challenges</h3>
+                <p>Real estate company facing high competition. Low website traffic, outdated property listings, minimal online presence.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>💡 Our Strategy</h3>
+                <p><strong>SEO:</strong> Optimized for property keywords, location-based searches, competitive keywords.</p>
+                <p><strong>Content:</strong> Virtual tours, neighborhood guides, investment guides, builder spotlights.</p>
+                <p><strong>Ads:</strong> Google Ads, Facebook Ads with property leads conversion tracking.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>🛠️ Services Used</h3>
+                <span class="service-tag">Technical SEO</span>
+                <span class="service-tag">Content Creation</span>
+                <span class="service-tag">Google Ads</span>
+                <span class="service-tag">Lead Generation</span>
+            </div>
+
+            <div class="modal-section">
+                <h3>⏱️ Timeline</h3>
+                <p>6 months - Website traffic improved in Month 1, leads started flowing by Month 2, optimized by Month 4-6.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="active-section">
@@ -590,21 +959,21 @@
         <h2 class="section-title">Latest Insights</h2>
         <div class="blog-grid">
             <div class="blog-card">
-                <div class="blog-date">Jan 20, 2026</div>
+                <div class="blog-date">Mar 15, 2026</div>
                 <div class="blog-content">
-                    <h3>SEO Trends 2024</h3>
-                    <p>Discover the latest SEO strategies that are driving traffic and rankings in 2024. Learn what's working and how to implement it.</p>
+                    <h3>SEO Trends 2026</h3>
+                    <p>Discover the latest SEO strategies that are driving traffic and rankings in 2026. Learn what's working and how to implement it.</p>
                 </div>
             </div>
             <div class="blog-card">
-                <div class="blog-date">Jan 15, 2026</div>
+                <div class="blog-date">Mar 10, 2026</div>
                 <div class="blog-content">
                     <h3>Social Media ROI</h3>
                     <p>How to measure and maximize your social media marketing return on investment. Real case studies and practical tips included.</p>
                 </div>
             </div>
             <div class="blog-card">
-                <div class="blog-date">Jan 10, 2026</div>
+                <div class="blog-date">Mar 05, 2026</div>
                 <div class="blog-content">
                     <h3>Content Strategy Guide</h3>
                     <p>A complete guide to creating content that converts. From planning to execution, everything you need to know.</p>
@@ -647,27 +1016,46 @@
 
     <script>
         function showSection(sectionId) {
-            // Hide all sections
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
                 section.classList.remove('active-section');
             });
 
-            // Show selected section
             const selectedSection = document.getElementById(sectionId);
             if (selectedSection) {
                 selectedSection.classList.add('active-section');
             }
 
-            // Update navigation
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.classList.remove('active');
             });
             event.target.classList.add('active');
 
-            // Scroll to top
             window.scrollTo(0, 0);
+        }
+
+        function openModal(projectId) {
+            const modal = document.getElementById(projectId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(projectId) {
+            const modal = document.getElementById(projectId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
     </script>
 </body>
